@@ -3,7 +3,10 @@ package com.example.as.utlis;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.example.as.configure.ServerKey;
+import com.example.as.utils.DesUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -48,4 +51,41 @@ public class DesTest {
         String decryptStr = des.decryptStr(encryptHex);
         System.out.println(decryptStr);
     }
+
+    @Test
+    public void testJson() {
+        DesUtils myTest = new DesUtils();
+        JSONObject json1 = JSONUtil.createObj()
+                .put("a", "value1")
+                .put("b", "value2")
+                .put("c", "value3");
+        byte[] key = SecureUtil.generateKey(SymmetricAlgorithm.DESede.getValue()).getEncoded();
+        String encrypt = myTest.encrypt(json1, key);
+        System.out.println(encrypt);
+    }
+
+    @Test
+    public void testDesString() {
+        byte[] key = SecureUtil.generateKey(SymmetricAlgorithm.DESede.getValue()).getEncoded();
+        DesUtils myDesUtils = new DesUtils();
+        String hello = myDesUtils.encrypt("hello", key);
+        System.out.println(hello);
+        String deHello = myDesUtils.decrypt(hello, key);
+        System.out.println(deHello);
+    }
+
+    @Test
+    public void testDesJson() {
+        DesUtils myTest = new DesUtils();
+        JSONObject json1 = JSONUtil.createObj()
+                .put("a", "value1")
+                .put("b", "value2")
+                .put("c", "value3");
+        byte[] key = SecureUtil.generateKey(SymmetricAlgorithm.DESede.getValue()).getEncoded();
+        String encrypt = myTest.encrypt(json1, key);
+        System.out.println(encrypt);
+        String decrypt = myTest.decrypt(encrypt, key);
+        System.out.println(decrypt);
+    }
+
 }

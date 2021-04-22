@@ -1,16 +1,22 @@
 package com.example.as.utlis;
 
+import cn.hutool.core.util.CharsetUtil;
+import cn.hutool.core.util.HexUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
+import cn.hutool.crypto.asymmetric.KeyType;
+import cn.hutool.crypto.asymmetric.RSA;
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.example.as.configure.ServerKey;
 import com.example.as.utils.DesUtils;
+import com.example.as.utils.RsaUtils;
 import org.junit.jupiter.api.Test;
 
+import java.security.PrivateKey;
 import java.util.Arrays;
-import java.util.Random;
+
 
 /**
  * @Author luoyanze[luoyanzeze@icloud.com]
@@ -20,23 +26,7 @@ import java.util.Random;
 
 public class DesTest {
 
-    @Test
-    public void testKeyLength() {
-        StringBuilder str1 = new StringBuilder();
-        StringBuilder str2 = new StringBuilder();
-        StringBuilder str3 = new StringBuilder();
-        for (int i = 0; i < 128; i++) {
-            char x1 = (char) (new Random().nextInt(92) + 33);
-            char x2 = (char) (new Random().nextInt(92) + 33);
-            char x3 = (char) (new Random().nextInt(92) + 33);
-            str1.append(x1);
-            str2.append(x2);
-            str3.append(x3);
-        }
-        System.out.println(str1);
-        System.out.println(str2);
-        System.out.println(str3);
-    }
+
 
     @Test
     public void testDes() {
@@ -86,6 +76,23 @@ public class DesTest {
         System.out.println(encrypt);
         String decrypt = myTest.decrypt(encrypt, key);
         System.out.println(decrypt);
+    }
+
+    @Test
+    public void rsaTest() {
+        RSA rsa = new RSA();
+        String privateKeyBase64 = rsa.getPrivateKeyBase64();
+        String publicKeyBase64 = rsa.getPublicKeyBase64();
+
+        JSONObject json1 = JSONUtil.createObj()
+                .put("a", "value1")
+                .put("b", "value2")
+                .put("c", "value3");
+        String nihao = RsaUtils.encrypt(json1, publicKeyBase64);
+        System.out.println(nihao);
+        String b = RsaUtils.decrypt(nihao, privateKeyBase64);
+        System.out.println(b);
+
     }
 
 }

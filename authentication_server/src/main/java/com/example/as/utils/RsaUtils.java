@@ -1,5 +1,12 @@
 package com.example.as.utils;
 
+import cn.hutool.core.util.CharsetUtil;
+import cn.hutool.core.util.HexUtil;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.asymmetric.KeyType;
+import cn.hutool.crypto.asymmetric.RSA;
+import com.alibaba.fastjson.JSON;
+
 /**
  * @Author luoyanze[luoyanzeze@icloud.com]
  * @Date 2021/4/22 5:39 下午
@@ -8,49 +15,22 @@ package com.example.as.utils;
 
 public class RsaUtils {
 
-    class Key {
-        String publicKey;
-        String privateKey;
-
-        public String getPublicKey() {
-            return publicKey;
-        }
-
-        public void setPublicKey(String publicKey) {
-            this.publicKey = publicKey;
-        }
-
-        public String getPrivateKey() {
-            return privateKey;
-        }
-
-        public void setPrivateKey(String privateKey) {
-            this.privateKey = privateKey;
-        }
+    public static String encrypt(String msg, String publicKey) {
+        RSA rsa = new RSA(null, publicKey);
+        return rsa.encryptStr(msg, KeyType.PublicKey);
     }
 
-    public RsaUtils() {
-
+    public static String encrypt(Object o, String publicKey) {
+        return encrypt(JSON.toJSONString(o), publicKey);
     }
 
-    //TODO
-    public String encrypt(String msg) {
-        return null;
+    public static String decrypt(String msg, String privateKey) {
+        RSA rsa = new RSA(privateKey, null);
+        return rsa.decryptStr(msg, KeyType.PrivateKey);
     }
 
-    //TODO
-    public String encrypt(Object o) {
-        return null;
-    }
-
-    //TODO
-    public String decrypt(String msg) {
-        return null;
-    }
-
-    //TODO
-    public String decrypt(Object o) {
-        return null;
+    public static String decrypt(Object o, String privateKey) {
+        return encrypt(JSON.toJSONString(o), privateKey);
     }
 
 }

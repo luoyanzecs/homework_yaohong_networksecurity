@@ -1,12 +1,14 @@
 package com.example.as.dao;
 
 import com.example.as.pojo.ClientUser;
+import org.springframework.stereotype.Repository;
 
 /**
  * @Author luoyanze[luoyanzeze@icloud.com]
  * @Date 2021/4/22 6:05 下午
  */
 
+@Repository
 public interface UserDao {
 
     /**
@@ -18,4 +20,5 @@ public interface UserDao {
      * @return: com.example.as.pojo.ClientUser
      */
     ClientUser getClientUser(String id);
+
 }

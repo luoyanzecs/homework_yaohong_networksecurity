@@ -2,7 +2,7 @@ package com.example.as.utils;
 
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
-import cn.hutool.json.JSONObject;
+import com.alibaba.fastjson.JSON;
 
 
 /**
@@ -13,24 +13,18 @@ import cn.hutool.json.JSONObject;
 
 public class DesUtils {
     public String encrypt(String msg, byte[] key) {
-        SymmetricCrypto des = new SymmetricCrypto(SymmetricAlgorithm.DESede, key);
-        return des.encryptHex(msg);
+        return new SymmetricCrypto(SymmetricAlgorithm.DESede, key).encryptHex(msg);
     }
 
     public String encrypt(Object o, byte[] key) {
-        JSONObject json1 = new JSONObject(o);
-        String content = json1.toString();
-        return encrypt(content, key);
+        return encrypt(JSON.toJSONString(o), key);
     }
 
     public String decrypt(String msg, byte[] key) {
-        SymmetricCrypto des = new SymmetricCrypto(SymmetricAlgorithm.DESede, key);
-        return des.decryptStr(msg);
+        return new SymmetricCrypto(SymmetricAlgorithm.DESede, key).decryptStr(msg);
     }
 
     public String decrypt(Object o, byte[] key) {
-        JSONObject json1 = new JSONObject(o);
-        String content = json1.toString();
-        return decrypt(content, key);
+        return decrypt(JSON.toJSONString(o), key);
     }
 }

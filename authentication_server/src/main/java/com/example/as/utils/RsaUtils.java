@@ -1,8 +1,6 @@
 package com.example.as.utils;
 
-import cn.hutool.core.util.CharsetUtil;
-import cn.hutool.core.util.HexUtil;
-import cn.hutool.core.util.StrUtil;
+
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.RSA;
 import com.alibaba.fastjson.JSON;
@@ -16,8 +14,7 @@ import com.alibaba.fastjson.JSON;
 public class RsaUtils {
 
     public static String encrypt(String msg, String publicKey) {
-        RSA rsa = new RSA(null, publicKey);
-        return rsa.encryptStr(msg, KeyType.PublicKey);
+        return new RSA(null, publicKey).encryptStr(msg, KeyType.PublicKey);
     }
 
     public static String encrypt(Object o, String publicKey) {
@@ -25,8 +22,7 @@ public class RsaUtils {
     }
 
     public static String decrypt(String msg, String privateKey) {
-        RSA rsa = new RSA(privateKey, null);
-        return rsa.decryptStr(msg, KeyType.PrivateKey);
+        return new RSA(privateKey, null).decryptStr(msg, KeyType.PrivateKey);
     }
 
     public static String decrypt(Object o, String privateKey) {

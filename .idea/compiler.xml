@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ticket_granting_service" />
+        <module name="homework_yaohong_networksecurity" />
+        <module name="web_server" />
+        <module name="authentication_server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="authentication_server" target="11" />
+      <module name="homework_yaohong_networksecurity" target="1.5" />
+      <module name="tgs_server" target="11" />
+      <module name="ticket_granting_service" target="11" />
+      <module name="web_server" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="authentication_server" options="-parameters" />
+      <module name="tgs_server" options="-parameters" />
+      <module name="ticket_granting_service" options="-parameters" />
+      <module name="web_server" options="-parameters" />
+    </option>
+  </component>
+</project>

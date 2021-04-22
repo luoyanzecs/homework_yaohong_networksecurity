@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/authentication_server/authentication_server.iml" filepath="$PROJECT_DIR$/authentication_server/authentication_server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/homework_yaohong_networksecurity.iml" filepath="$PROJECT_DIR$/homework_yaohong_networksecurity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ticket_granting_service/ticket_granting_service.iml" filepath="$PROJECT_DIR$/ticket_granting_service/ticket_granting_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web_client/web_client.iml" filepath="$PROJECT_DIR$/web_client/web_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web_server/web_server.iml" filepath="$PROJECT_DIR$/web_server/web_server.iml" />
+    </modules>
+  </component>
+</project>

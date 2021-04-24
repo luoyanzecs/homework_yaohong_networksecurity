@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.luoyanze.as.mapper.SessionMapper">
+    <insert id="insertSession">
+
+    </insert>
+    <insert id="insert"></insert>
+    <update id="updateSession">
+
+    </update>
+    <update id="updateRsa">
+
+    </update>
+    <update id="updateTime">
+
+    </update>
+    <update id="updateClientId">
+
+    </update>
+    <update id="updateKeyClient">
+
+    </update>
+    <update id="updateKeyClientTgs">
+
+    </update>
+    <update id="updateKeyClientServer">
+
+    </update>
+
+    <select id="getSession" resultType="cn.luoyanze.as.pojo.SessionPO">
+
+    </select>
+</mapper>

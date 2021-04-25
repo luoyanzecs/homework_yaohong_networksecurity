@@ -2,7 +2,7 @@ package cn.luoyanze.as.utlis;
 
 import cn.luoyanze.as.utils.RsaUtils;
 import cn.hutool.crypto.asymmetric.RSA;
-import cn.luoyanze.as.pojo.ClientUser;
+import cn.luoyanze.as.pojo.UserPO;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -31,23 +31,28 @@ public class RsaUtilsTest {
 
     @Test
     public void encryptTestJson() {
-        ClientUser clientUser = new ClientUser("123", "123");
+        UserPO userPO = new UserPO("123", "123");
 
         RSA rsa = new RSA();
         String privateKeyBase64 = rsa.getPrivateKeyBase64();
         String publicKeyBase64 = rsa.getPublicKeyBase64();
-        String str = RsaUtils.encrypt(clientUser, publicKeyBase64);
+        String str = RsaUtils.encrypt(userPO, publicKeyBase64);
         System.out.println(str);
         System.out.println(RsaUtils.decrypt(str, privateKeyBase64));
     }
 
     @Test
     public void rsaTest() {
-        //String str = "124u32859471504jeiowfhenfewkqr2oi4o3irji4578608708690tr66f6d5r";
-        //RsaUtils.Key rsaKey = RsaUtils.createRsaKey();
-        //String privateKey = rsaKey.getPrivateKey();
-        //String encrypt = RsaUtils.encrypt(str, rsaKey.getPublicKey());
-        //System.out.println(encrypt.length());
-        //RsaUtils.decrypt(str, privateKey);
+        for (int i = 0; i < 100; i++) {
+            RsaUtils.Key rsaKey = RsaUtils.createRsaKey();
+            System.out.println(rsaKey.getPrivateKey().length());
+            System.out.println(rsaKey.getPublicKey().length());
+            System.out.println("------------");
+        }
+    }
+
+    @Test void keytest() {
+        String a = RsaUtils.encrypt("fDspkstUtcFkcOxPCBmu8oyiKpEanQgs", "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJ/WhppnVe2BNv7ZlFCuIMGpmgQ4gGP495jXvR58sEpcdP3NlFPhQWYvG9fjjqRsVwI/Szr32Kuk67DWOZ2L2mSU72U7ZzIUC0FMxFnVBPnPn/qvi2iga2vjGH6nCnQvQI1X/x5Iqm/ki9ggK6RmTRFgiVu8rR4Kr4/trcjFTYJwIDAQAB");
+        System.out.println(a.length());
     }
 }

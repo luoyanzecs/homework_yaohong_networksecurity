@@ -1,6 +1,6 @@
 package cn.luoyanze.as.controller;
 
-import cn.luoyanze.as.pojo.SessionKeys;
+import cn.luoyanze.as.aop.annotation.ControllerPointCut;
 import cn.luoyanze.as.service.AsService;
 import cn.luoyanze.as.utils.RsaUtils;
 import cn.luoyanze.as.utils.UUIDUtils;
@@ -30,7 +30,8 @@ public class AsController {
      */
     @GetMapping("")
     String connect() {
-        return asService.initStatus(new SessionKeys("", RsaUtils.createRsaKey()), UUIDUtils.create());
+        RsaUtils.Key rsaKey = RsaUtils.createRsaKey();
+        return asService.initStatus(rsaKey.getPublicKey(), rsaKey.getPrivateKey(), UUIDUtils.create());
     }
 
     /**
@@ -38,6 +39,7 @@ public class AsController {
      * param using rsa.
      * return status encrypt with des.
      */
+    @ControllerPointCut
     @GetMapping("/login/{sessionId}/{clientId}/{clientPassword}/{clientDesKey}")
     String login(@PathVariable("sessionId") String sessionId,
                  @PathVariable("clientId") String clientId,
@@ -50,13 +52,14 @@ public class AsController {
     /**
      * using rsa, return status
      */
+    @ControllerPointCut
     @GetMapping("/register/{sessionId}/{clientId}/{clientPassword}/{clientDesKey}")
     String register(@PathVariable("clientId") String id,
                     @PathVariable("clientPassword") String password,
                     @PathVariable("sessionId") String sessionId,
                     @PathVariable("clientDesKey") String desKey) {
 
-        return asService.registerCheck(sessionId, id, password);
+        return asService.registerCheck(sessionId, id, password, desKey);
     }
 }
 

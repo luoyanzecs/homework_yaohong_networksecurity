@@ -1,12 +1,9 @@
 package cn.luoyanze.as.aop;
 
-import cn.luoyanze.as.mapper.SessionKeyDao;
 import cn.luoyanze.as.mapper.SessionMapper;
-import lombok.Data;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +14,11 @@ import java.io.IOException;
  * @Author luoyanze[luoyanzeze@icloud.com]
  * @Date 2021/4/23 9:19 下午
  */
-@Data
+
 @Aspect
 @Component
 public class SessionPointCut {
     private final HttpServletResponse response;
-    //private final SessionKeyDao sessionKeyDao;
     private final SessionMapper session;
 
     public SessionPointCut(HttpServletResponse response, SessionMapper session) {
@@ -30,11 +26,7 @@ public class SessionPointCut {
         this.session = session;
     }
 
-    @Pointcut("execution(* cn.luoyanze.as.controller.AsController.*(..))")
-    public void point() {
-    }
-
-    @Around("point()")
+    @Around("@annotation(cn.luoyanze.as.aop.annotation.ControllerPointCut)")
     public Object sessionIdError(ProceedingJoinPoint joinPoint) throws Throwable {
         Object[] args = joinPoint.getArgs();
         String[] argNames = ((MethodSignature) joinPoint.getSignature()).getParameterNames();

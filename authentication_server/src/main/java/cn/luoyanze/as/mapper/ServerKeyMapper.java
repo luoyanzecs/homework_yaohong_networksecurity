@@ -1,7 +1,8 @@
 package cn.luoyanze.as.mapper;
 
-import cn.luoyanze.as.pojo.ServerKeyPO;
+import cn.luoyanze.as.pojo.ServerKeyParent;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,5 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface ServerKeyMapper {
-    public ServerKeyPO getServerKey();
+
+    @Select("select * from server_key")
+    ServerKeyParent getServerKey();
 }

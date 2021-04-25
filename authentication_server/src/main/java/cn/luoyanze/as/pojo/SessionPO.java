@@ -3,7 +3,6 @@ package cn.luoyanze.as.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 /**
  * @Author luoyanze[luoyanzeze@icloud.com]

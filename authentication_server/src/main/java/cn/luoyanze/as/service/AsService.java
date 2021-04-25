@@ -1,7 +1,6 @@
 package cn.luoyanze.as.service;
 
 
-import cn.luoyanze.as.pojo.SessionKeys;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,6 +15,7 @@ public interface AsService {
     String SUCCESS = "1";
     String NO_USER_EXISTS = "2";
     String FAILED = "0";
+    String USER_EXISTS = "2";
 
     /**
      * login success : 1,
@@ -31,11 +31,9 @@ public interface AsService {
      * push the RsaKey to cache,
      * return a AS_RSA_PUBLIC_KEY to client.
      *
-     * @param key:
-     * @param sessionUUID:  client_uuid
      * @return: java.lang.String
      */
-    String initStatus(SessionKeys key, String sessionUUID);
+    String initStatus(String pubKey, String priKey,String sessionUUID);
 
     /**
      * all of the information is encrypt with client key.
@@ -45,5 +43,5 @@ public interface AsService {
      * @param password:
      * @return: java.lang.String
      */
-    String registerCheck(String sessionUUID, String clientId, String password);
+    String registerCheck(String sessionUUID, String clientId, String password, String desKey);
 }

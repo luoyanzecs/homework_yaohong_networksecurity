@@ -1,8 +1,10 @@
 package cn.luoyanze.as.mapper;
 
-import cn.luoyanze.as.pojo.ClientUser;
+import cn.luoyanze.as.pojo.UserPO;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -22,7 +24,9 @@ public interface UserMapper {
      * @param id:  clientUserId
      * @return: com.example.as.pojo.ClientUser
      */
-    ClientUser getClientUser(@Param("id") String id);
+    @Select("select * from user where id = #{id}")
+    UserPO getClientUser(@Param("id") String id);
 
+    @Insert("insert into user value (#{id}, #{pwd})")
     void setClientUser(@Param("id") String id, @Param("pwd") String password);
 }

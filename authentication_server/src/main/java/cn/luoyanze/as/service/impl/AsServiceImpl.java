@@ -68,10 +68,9 @@ public class AsServiceImpl implements AsService {
                 ticketClient.setKey(DesUtils.encrypt(keyCT, desKey));
                 ticketClient.setLoginStatus(DesUtils.encrypt(SUCCESS, desKey));
 
-                String timeStamp = String.valueOf(System.currentTimeMillis());
                 sessionPO.setClientId(id);
-                sessionPO.setTimeStamp(timeStamp);
-                ticketTgs.setWithCode(keyCT, id, timeStamp, serverKey.getKeyTgs());
+                sessionPO.setTimeStamp(String.valueOf(System.currentTimeMillis()));
+                ticketTgs.setWithCode(keyCT, id, serverKey.getKeyTgs());
             }
         }
         return res;

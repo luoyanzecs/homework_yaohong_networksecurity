@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.luoyanze.as.mapper.SessionMapper">
+    <insert id="insertSession">
+        insert into session (session_id,
+                             rsa_private_key,
+                             rsa_public_key,
+                             client_id,
+                             des_key_client,
+                             des_key_client_tgs,
+                             des_key_client_server,
+                             time_stamp)
+        values (
+                #{sessionId},
+                #{rsaPrivateKey},
+                #{rsaPublicKey},
+                #{clientId},
+                #{desKeyClient},
+                #{desKeyClientTgs},
+                #{desKeyClientServer},
+                #{timeStamp}
+               )
+    </insert>
+
+    <select id="getSession" resultType="cn.luoyanze.web.pojo.SessionPO">
+        select * from session where session_id = #{sessionId};
+    </select>
+
+    <update id="updateSession">
+        update session
+        set rsa_private_key = #{session.rsaPrivateKey},
+            rsa_public_key = #{session.rsaPublicKey},
+            client_id = #{session.clientId},
+            des_key_client = #{session.desKeyClient},
+            des_key_client_tgs = #{session.desKeyClientTgs},
+            des_key_client_server = #{session.desKeyClientServer},
+            time_stamp = #{session.timeStamp}
+        where session_id = #{session.sessionId};
+    </update>
+
+    <insert id="insert">
+        insert into session (session_id, rsa_public_key, rsa_private_key, client_id, des_key_client)
+        values (#{sessionId}, #{rsaPubKey}, #{rsaPriKey}, #{clientId}, #{desKeyClient})
+    </insert>
+    <!--<update id="updateRsa">-->
+    <!--    update session-->
+    <!--    set rsa_public_key = #{pub}, rsa_private_key = #{pri}-->
+    <!--    where session_id = #{sessionId};-->
+    <!--</update>-->
+    <!--<update id="updateTime">-->
+    <!--    update session-->
+    <!--    set time_stamp = #{time}-->
+    <!--    where session_id = #{sessionId};-->
+    <!--</update>-->
+    <!--<update id="updateClientId">-->
+    <!--    update session-->
+    <!--    set client_id = #{clientId}-->
+    <!--    where session_id = #{sessionId};-->
+    <!--</update>-->
+    <!--<update id="updateKeyClient">-->
+    <!--    update session-->
+    <!--    set des_key_client = #{key}-->
+    <!--    where session_id = #{sessionId};-->
+    <!--</update>-->
+    <!--<update id="updateKeyClientTgs">-->
+    <!--    update session-->
+    <!--    set des_key_client_tgs = #{key}-->
+    <!--    where session_id = #{sessionId};-->
+    <!--</update>-->
+    <!--<update id="updateKeyClientServer">-->
+    <!--    update session-->
+    <!--    set des_key_client_server = #{key}-->
+    <!--    where session_id = #{sessionId};-->
+    <!--</update>-->
+</mapper>

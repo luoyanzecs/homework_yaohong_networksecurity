@@ -1,6 +1,6 @@
 package cn.luoyanze.as.pojo.vo;
 
-import cn.luoyanze.as.utils.DesUtils;
+import cn.luoyanze.utils.DesUtils;
 import lombok.Data;
 
 /**
@@ -13,11 +13,9 @@ import lombok.Data;
 public class TicketTgs {
     private String key;
     private String clientId;
-    private String timestamp;
 
-    public void setWithCode(String key, String clientId, String timestamp, String encrypt) {
+    public void setWithCode(String key, String clientId, String encrypt) {
         this.key = DesUtils.encrypt(key, encrypt);
         this.clientId = DesUtils.encrypt(clientId, encrypt);
-        this.timestamp = DesUtils.encrypt(timestamp, encrypt);
     }
 }

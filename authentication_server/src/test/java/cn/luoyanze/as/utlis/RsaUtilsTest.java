@@ -1,6 +1,6 @@
 package cn.luoyanze.as.utlis;
 
-import cn.luoyanze.as.utils.RsaUtils;
+import cn.luoyanze.utils.RsaUtils;
 import cn.hutool.crypto.asymmetric.RSA;
 import cn.luoyanze.as.pojo.UserPO;
 import org.junit.jupiter.api.Test;

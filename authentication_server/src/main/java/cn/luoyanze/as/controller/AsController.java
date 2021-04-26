@@ -2,8 +2,8 @@ package cn.luoyanze.as.controller;
 
 import cn.luoyanze.as.aop.annotation.ControllerPointCut;
 import cn.luoyanze.as.service.AsService;
-import cn.luoyanze.as.utils.RsaUtils;
-import cn.luoyanze.as.utils.UUIDUtils;
+import cn.luoyanze.utils.RsaUtils;
+import cn.luoyanze.utils.UUIDUtils;
 import lombok.Data;
 import org.springframework.web.bind.annotation.*;
 

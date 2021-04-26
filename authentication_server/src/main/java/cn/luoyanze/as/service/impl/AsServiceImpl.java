@@ -6,8 +6,8 @@ import cn.luoyanze.as.pojo.vo.TicketClient;
 import cn.luoyanze.as.pojo.vo.TicketTgs;
 import cn.luoyanze.as.service.AsService;
 import cn.luoyanze.as.mapper.UserMapper;
-import cn.luoyanze.as.utils.DesUtils;
-import cn.luoyanze.as.utils.RsaUtils;
+import cn.luoyanze.utils.DesUtils;
+import cn.luoyanze.utils.RsaUtils;
 import com.alibaba.fastjson.JSON;
 import lombok.Data;
 import org.springframework.stereotype.Service;
@@ -68,10 +68,9 @@ public class AsServiceImpl implements AsService {
                 ticketClient.setKey(DesUtils.encrypt(keyCT, desKey));
                 ticketClient.setLoginStatus(DesUtils.encrypt(SUCCESS, desKey));
 
-                String timeStamp = String.valueOf(System.currentTimeMillis());
                 sessionPO.setClientId(id);
-                sessionPO.setTimeStamp(timeStamp);
-                ticketTgs.setWithCode(keyCT, id, timeStamp, serverKey.getKeyTgs());
+                sessionPO.setTimeStamp(String.valueOf(System.currentTimeMillis()));
+                ticketTgs.setWithCode(keyCT, id, serverKey.getKeyTgs());
             }
         }
         return res;

@@ -1,7 +1,7 @@
 package cn.luoyanze.as.utlis;
 
-import cn.luoyanze.as.utils.DesUtils;
-import cn.luoyanze.as.utils.RsaUtils;
+import cn.luoyanze.utils.DesUtils;
+import cn.luoyanze.utils.RsaUtils;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.asymmetric.RSA;
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;

@@ -1,4 +1,4 @@
-package cn.luoyanze.as.utils;
+package cn.luoyanze.utils;
 
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
@@ -57,7 +57,4 @@ public class DesUtils {
         return new SymmetricCrypto(SymmetricAlgorithm.DESede, Base64.getDecoder().decode(key)).decryptStr(msg);
     }
 
-    public static String decrypt(Object o, byte[] key) {
-        return decrypt(JSON.toJSONString(o), key);
-    }
 }

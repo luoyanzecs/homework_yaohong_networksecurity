@@ -1,4 +1,4 @@
-package cn.luoyanze.as.utils;
+package cn.luoyanze.utils;
 
 import java.util.UUID;
 

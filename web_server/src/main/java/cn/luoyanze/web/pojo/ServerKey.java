@@ -1,6 +1,7 @@
 package cn.luoyanze.web.pojo;
 
 import cn.luoyanze.web.mapper.ServerKeyMapper;
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 /**

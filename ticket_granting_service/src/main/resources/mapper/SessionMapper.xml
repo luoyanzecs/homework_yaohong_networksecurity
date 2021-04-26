@@ -44,34 +44,4 @@
         insert into session (session_id, rsa_public_key, rsa_private_key, client_id, des_key_client)
         values (#{sessionId}, #{rsaPubKey}, #{rsaPriKey}, #{clientId}, #{desKeyClient})
     </insert>
-    <!--<update id="updateRsa">-->
-    <!--    update session-->
-    <!--    set rsa_public_key = #{pub}, rsa_private_key = #{pri}-->
-    <!--    where session_id = #{sessionId};-->
-    <!--</update>-->
-    <!--<update id="updateTime">-->
-    <!--    update session-->
-    <!--    set time_stamp = #{time}-->
-    <!--    where session_id = #{sessionId};-->
-    <!--</update>-->
-    <!--<update id="updateClientId">-->
-    <!--    update session-->
-    <!--    set client_id = #{clientId}-->
-    <!--    where session_id = #{sessionId};-->
-    <!--</update>-->
-    <!--<update id="updateKeyClient">-->
-    <!--    update session-->
-    <!--    set des_key_client = #{key}-->
-    <!--    where session_id = #{sessionId};-->
-    <!--</update>-->
-    <!--<update id="updateKeyClientTgs">-->
-    <!--    update session-->
-    <!--    set des_key_client_tgs = #{key}-->
-    <!--    where session_id = #{sessionId};-->
-    <!--</update>-->
-    <!--<update id="updateKeyClientServer">-->
-    <!--    update session-->
-    <!--    set des_key_client_server = #{key}-->
-    <!--    where session_id = #{sessionId};-->
-    <!--</update>-->
 </mapper>

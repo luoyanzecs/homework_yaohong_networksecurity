@@ -1,6 +1,6 @@
 package cn.luoyanze.as.pojo.vo;
 
-import cn.luoyanze.as.utils.DesUtils;
+import cn.luoyanze.utils.DesUtils;
 import lombok.Data;
 
 /**

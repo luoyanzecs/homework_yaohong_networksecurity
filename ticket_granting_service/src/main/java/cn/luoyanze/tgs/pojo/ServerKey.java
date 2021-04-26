@@ -1,6 +1,6 @@
 package cn.luoyanze.tgs.pojo;
 
-import cn.luoyanze.as.mapper.ServerKeyMapper;
+import cn.luoyanze.tgs.mapper.ServerKeyMapper;
 import org.springframework.stereotype.Component;
 
 /**

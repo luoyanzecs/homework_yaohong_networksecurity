@@ -6,7 +6,7 @@ import cn.luoyanze.tgs.pojo.SessionPO;
 import cn.luoyanze.tgs.pojo.vo.TicketClient;
 import cn.luoyanze.tgs.pojo.vo.TicketServer;
 import cn.luoyanze.tgs.pojo.vo.TicketTemp;
-import cn.luoyanze.tgs.utils.DesUtils;
+import cn.luoyanze.utils.DesUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;

@@ -1,4 +1,4 @@
-package cn.luoyanze.web.utils;
+package cn.luoyanze.utils;
 
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;

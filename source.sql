@@ -9,9 +9,17 @@ create table if not exists server_key(
     );
 
 create table if not exists user(
-    id varchar(20) not null ,
-    password varchar(20) not null
+    id varchar(20) not null primary key,
+    password varchar(20) not null,
     );
+
+create table if not exists msg(
+    id varchar(20) not null,
+    time_stamp varchar(20) not null ,
+    ctx varchar(1024) not null,
+    user_id varchar(20) not null
+    );
+
 
 create table if not exists session(
     session_id varchar(32) not null primary key ,
